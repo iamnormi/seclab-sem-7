@@ -1,0 +1,94 @@
+#RSA Algorithm using HTML and JavaScript
+<!DOCTYPE html>
+<html>
+<head>
+<title>RSA Encryption</title>
+<meta name="viewport" content="width=device-width, initialscale=1.0">
+</head>
+<body>
+<h1 style="text-align: center;">RSA Algorithm</h1>
+<h2 style="text-align: center;">Implemented Using HTML & Javascript</h2>
+<hr>
+<table class="center">
+<tr>
+<td>Enter P:</td>
+<td><input type="number" value="53" id="p"></td>
+</tr>
+<tr>
+<td>Enter Q :</td>
+<td><input type="number" value="59" id="q"></p>
+</td>
+</tr>
+<tr>
+<td>Enter the Message:<br>[A=1, B=2,...]</td>
+<td><input type="number" value="89" id="msg"></p>
+</td>
+</tr>
+<tr>
+<td>Public Key(N):</td>
+<td>
+<p id="publickey(N)"></p>
+</td>
+</tr>
+<tr>
+<td>Exponent(e):</td>
+<td>
+<p id="exponent(e)"></p>
+</td>
+</tr>
+<tr>
+<td>Private Key(d):</td>
+<td>
+<p id="privatekey(d)"></p>
+</td>
+</tr>
+<tr>
+<td>Cipher Text(c):</td>
+<td>
+<p id="ciphertext(ct)"></p>
+</td>
+</tr>
+<tr>
+    <td><button onclick="RSA();">Apply RSA</button></td>
+    </tr>
+    </table>
+   
+    </body>
+    <style>
+        .center {
+  margin-left: auto;
+  margin-right: auto;
+}
+    </style>
+    <script type="text/javascript">
+    function RSA() {
+    var gcd, p, q, no, n, t, e, i, x;
+    gcd = function (a, b) { return (!b) ? a : gcd(b, a % b); };
+    p = document.getElementById('p').value;
+    q = document.getElementById('q').value;
+    no = document.getElementById('msg').value;
+    n = p * q;
+    t = (p - 1) * (q - 1);
+    for (e = 2; e < t; e++) {
+    if (gcd(e, t) == 1) {
+    break;
+    }
+    }
+    for (i = 0; i < 10; i++) {
+    x = 1 + i * t
+    if (x % e == 0) {
+    d = x / e;
+    break;
+    }
+}
+ctt = Math.pow(no, e).toFixed(0);
+ct = ctt % n;
+dtt = Math.pow(ct, d).toFixed(0);
+dt = dtt % n;
+document.getElementById('publickey(N)').innerHTML = n;
+document.getElementById('exponent(e)').innerHTML = e;
+document.getElementById('privatekey(d)').innerHTML = d;
+document.getElementById('ciphertext(ct)').innerHTML = ct;
+}
+</script>
+</html>
