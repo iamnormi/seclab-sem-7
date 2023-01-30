@@ -1,0 +1,5 @@
+On Victim Machine:
+$ sudo apt install snort
+$ sudo snort -A console -c /etc/snort/snort.conf
+On Attacker Machine:
+$ ping vitim.ip # Example: 192.168.22.1
